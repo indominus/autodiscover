@@ -13,6 +13,67 @@ $dom = new DOMDocument('1.0', 'UTF-8');
 $dom->formatOutput = true;
 $dom->preserveWhiteSpace = true;
 
+$clientConfig = $dom->createElement('clientConfig');
+
+/*
+ * <clientConfig version="1.1">
+  <emailProvider id="freenet.de">
+    <domain>freenet.de</domain>
+    <displayName>Freenet Mail</displayName>
+    <displayShortName>Freenet</displayShortName>
+    <incomingServer type="imap">
+      <hostname>imap.freenet.de</hostname>
+      <port>993</port>
+      <socketType>SSL</socketType>
+      <authentication>password-encrypted</authentication>
+      <username>%EMAILADDRESS%</username>
+    </incomingServer>
+    <incomingServer type="imap">
+      <hostname>imap.freenet.de</hostname>
+      <port>143</port>
+      <socketType>STARTTLS</socketType>
+      <authentication>password-encrypted</authentication>
+      <username>%EMAILADDRESS%</username>
+    </incomingServer>
+    <incomingServer type="pop3">
+      <hostname>pop.freenet.de</hostname>
+      <port>995</port>
+      <socketType>SSL</socketType>
+      <authentication>password-cleartext</authentication>
+      <username>%EMAILADDRESS%</username>
+    </incomingServer>
+    <incomingServer type="pop3">
+      <hostname>pop.freenet.de</hostname>
+      <port>110</port>
+      <socketType>STARTTLS</socketType>
+      <authentication>password-cleartext</authentication>
+      <username>%EMAILADDRESS%</username>
+    </incomingServer>
+    <outgoingServer type="smtp">
+      <hostname>smtp.freenet.de</hostname>
+      <port>587</port>
+      <socketType>SSL</socketType>
+      <authentication>password-encrypted</authentication>
+      <username>%EMAILADDRESS%</username>
+    </outgoingServer>
+    <outgoingServer type="smtp">
+      <hostname>smtp.freenet.de</hostname>
+      <port>587</port>
+      <socketType>STARTTLS</socketType>
+      <authentication>password-encrypted</authentication>
+      <username>%EMAILADDRESS%</username>
+    </outgoingServer>
+    <documentation url="http://kundenservice.freenet.de/hilfe/email/programme/config/index.html">
+      <descr lang="de">Allgemeine Beschreibung der Einstellungen</descr>
+      <descr lang="en">Generic settings page</descr>
+    </documentation>
+    <documentation url="http://kundenservice.freenet.de/hilfe/email/programme/config/thunderbird/imap-thunderbird/imap/index.html">
+      <descr lang="de">TB 2.0 IMAP-Einstellungen</descr>
+      <descr lang="en">TB 2.0 IMAP settings</descr>
+    </documentation>
+  </emailProvider>
+</clientConfig>
+ */
 $autoDiscover = $dom->createElement('Autodiscover');
 $autoDiscoverAttribute = $dom->createAttribute('xmlns');
 $autoDiscoverAttribute->value = 'http://schemas.microsoft.com/exchange/autodiscover/responseschema/2006';
