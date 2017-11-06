@@ -13,6 +13,7 @@ $clientConfig->appendChild($clientConfigVersion);
 $emailProvider = $dom->createElement('emailProvider');
 $emailProviderID = $dom->createAttribute('id');
 $emailProviderID->value = 'mail.devx.biz';
+$emailProvider->appendChild($emailProviderID);
 
 $domain = $dom->createElement('domain', 'mail.devx.biz');
 $displayName = $dom->createElement('displayName', 'DevX Mail Server');
