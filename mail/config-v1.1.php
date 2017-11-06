@@ -24,20 +24,20 @@ $emailProvider->appendChild($dom->createElement('displayShortName', 'DevX Mail')
 
 foreach (['imap' => 143, 'imaps' => 993, 'pop3' => 110, 'pop3s' => 995, 'smtp' => 25, 'smtps' => 465] AS $protocol => $port) {
     
-    $incomingServer = $dom->createElement('incomingServer');
+    $server = $dom->createElement(in_array($protocol, ['smtp', 'smtps']) ? 'outgoingServer' : 'incomingServer');
     
-    $incomingServerType = $dom->createAttribute('type');
-    $incomingServerType->value = $protocol;
+    $serverType = $dom->createAttribute('type');
+    $serverType->value = $protocol;
     
-    $incomingServer->appendChild($incomingServerType);
+    $server->appendChild($serverType);
     
-    $incomingServer->appendChild($dom->createElement('hostname', 'mail.devx.biz'));
-    $incomingServer->appendChild($dom->createElement('port', $port));
-    $incomingServer->appendChild($dom->createElement('socketType', in_array($port, [143, 110, 25]) ? 'STARTTLS' : 'SSL'));
-    $incomingServer->appendChild($dom->createElement('authentication', 'password-encrypted'));
-    $incomingServer->appendChild($dom->createElement('username', '%EMAILADDRESS%'));
+    $server->appendChild($dom->createElement('hostname', 'mail.devx.biz'));
+    $server->appendChild($dom->createElement('port', $port));
+    $server->appendChild($dom->createElement('socketType', in_array($port, [143, 110, 25]) ? 'STARTTLS' : 'SSL'));
+    $server->appendChild($dom->createElement('authentication', 'password-encrypted'));
+    $server->appendChild($dom->createElement('username', '%EMAILADDRESS%'));
     
-    $emailProvider->appendChild($incomingServer);
+    $emailProvider->appendChild($server);
 }
 
 $clientConfig->appendChild($emailProvider);
