@@ -1,6 +1,9 @@
 <?php
 header("Content-type: text/xml");
 
+$email = filter_input(INPUT_GET, 'emailaddress');
+list($local, $domain) = explode('@', $email);
+
 $dom = new DOMDocument('1.0', 'UTF-8');
 $dom->formatOutput = true;
 $dom->preserveWhiteSpace = true;
@@ -15,13 +18,9 @@ $emailProviderID = $dom->createAttribute('id');
 $emailProviderID->value = 'mail.devx.biz';
 $emailProvider->appendChild($emailProviderID);
 
-$domain = $dom->createElement('domain', 'mail.devx.biz');
-$displayName = $dom->createElement('displayName', 'DevX Mail Server');
-$displayShortName = $dom->createElement('displayShortName', 'DevX Mail');
-
-$emailProvider->appendChild($domain);
-$emailProvider->appendChild($displayName);
-$emailProvider->appendChild($displayShortName);
+$emailProvider->appendChild($dom->createElement('domain', $domain));
+$emailProvider->appendChild($dom->createElement('displayName', 'DevX Mail Server'));
+$emailProvider->appendChild($dom->createElement('displayShortName', 'DevX Mail'));
 
 foreach (['imap' => 143, 'imaps' => 993, 'pop3' => 110, 'pop3s' => 995, 'smtp' => 25, 'smtps' => 465] AS $protocol => $port) {
     
