@@ -33,7 +33,7 @@ foreach (['imap' => 993, 'pop3' => 995, 'smtp' => 465] AS $protocol => $port) {
     
     $server->appendChild($dom->createElement('hostname', 'mail.devx.biz'));
     $server->appendChild($dom->createElement('port', $port));
-    $server->appendChild($dom->createElement('socketType', in_array($port, [143, 110, 25]) ? 'STARTTLS' : 'SSL'));
+    $server->appendChild($dom->createElement('socketType', 'SSL'));
     $server->appendChild($dom->createElement('authentication', 'password-encrypted'));
     $server->appendChild($dom->createElement('username', '%EMAILADDRESS%'));
     
