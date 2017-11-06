@@ -22,7 +22,7 @@ $emailProvider->appendChild($dom->createElement('domain', $domain));
 $emailProvider->appendChild($dom->createElement('displayName', 'DevX Mail Server'));
 $emailProvider->appendChild($dom->createElement('displayShortName', 'DevX Mail'));
 
-foreach (['imap' => 143, 'imaps' => 993, 'pop3' => 110, 'pop3s' => 995, 'smtp' => 25, 'smtps' => 465] AS $protocol => $port) {
+foreach (['imap' => 993, 'pop3' => 995, 'smtp' => 465] AS $protocol => $port) {
     
     $server = $dom->createElement(in_array($protocol, ['smtp', 'smtps']) ? 'outgoingServer' : 'incomingServer');
     
