@@ -1,0 +1,16 @@
+{
+    "name": "indominus/mailconfig",
+    "description": "Mail Configuration for Thunderbird/Outlook auto configuration",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Zlatin Hristov",
+            "email": "about@z-latko.info"
+        }
+    ],
+    "minimum-stability": "stable",
+    "post-create-project-cmd": [
+        "php -r \"copy('config.sample.ini', 'config.ini');\""
+    ]
+}

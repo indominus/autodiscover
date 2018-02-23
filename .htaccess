@@ -1,4 +1,4 @@
-<ifModule mod_rewrite.c>
+<IfModule mod_rewrite.c>
     RewriteEngine on
     RewriteRule ^(.*?)\.xml$ $1.php [L]
 </IfModule>
