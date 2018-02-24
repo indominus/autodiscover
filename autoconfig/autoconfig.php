@@ -43,7 +43,7 @@ $emailProvider->appendChild($serverImap);
 $serverPop3Type = $dom->createAttribute('type');
 $serverPop3Type->value = 'pop3';
 
-$serverPop3 = $dom->createElement('outgoingServer');
+$serverPop3 = $dom->createElement('incomingServer');
 $serverPop3->appendChild($serverPop3Type);
 $serverPop3->appendChild($dom->createElement('hostname', $configs['pop3']['hostname']));
 $serverPop3->appendChild($dom->createElement('port', $configs['pop3']['port']));
@@ -54,7 +54,7 @@ $serverPop3->appendChild($dom->createElement('username', '%EMAILADDRESS%'));
 $emailProvider->appendChild($serverPop3);
 
 $serverSmtpType = $dom->createAttribute('type');
-$serverSmtpType->value = 'pop3';
+$serverSmtpType->value = 'smtp';
 
 $serverSmtp = $dom->createElement('outgomingServer');
 $serverSmtp->appendChild($serverSmtpType);
