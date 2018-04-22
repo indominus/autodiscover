@@ -8,7 +8,7 @@ $configs = parse_ini_file('config.ini', true);
 $email = filter_input(INPUT_GET, 'emailaddress');
 list($local, $domain) = explode('@', $email);
 
-$dom = new DOMDocument('1.0', 'UTF-8');
+$dom = new DOMDocument('1.1', 'UTF-8');
 $dom->formatOutput = true;
 $dom->preserveWhiteSpace = true;
 
