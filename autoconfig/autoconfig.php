@@ -8,7 +8,7 @@ $configs = parse_ini_file('config.ini', true);
 $email = filter_input(INPUT_GET, 'emailaddress');
 list($local, $domain) = explode('@', $email);
 
-$dom = new DOMDocument('1.1', 'UTF-8');
+$dom = new DOMDocument();
 $dom->formatOutput = true;
 $dom->preserveWhiteSpace = true;
 
@@ -19,7 +19,7 @@ $clientConfig->appendChild($clientConfigVersion);
 
 $emailProvider = $dom->createElement('emailProvider');
 $emailProviderID = $dom->createAttribute('id');
-$emailProviderID->value = $configs['email']['provider'];
+$emailProviderID->value = $domain;
 $emailProvider->appendChild($emailProviderID);
 
 $emailProvider->appendChild($dom->createElement('domain', $domain));
