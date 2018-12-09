@@ -3,6 +3,9 @@
 // return header xml
 header('Content-Type: text/xml');
 
+error_reporting(E_ALL);
+ini_set('display_errors', 'On');
+
 set_include_path('..');
 
 $configs = parse_ini_file('config.ini', true);
