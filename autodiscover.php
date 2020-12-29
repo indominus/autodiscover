@@ -63,6 +63,7 @@ $protocolSmtp->appendChild($dom->createElement('LoginName', implode('@', array($
 $protocolSmtp->appendChild($dom->createElement('DomainRequired', 'on'));
 $protocolSmtp->appendChild($dom->createElement('SPA', 'off'));
 $protocolSmtp->appendChild($dom->createElement('SSL', $configs['smtp']['socketType'] == 'SSL' ? 'on' : 'off'));
+$protocolSmtp->appendChild($dom->createElement('Encryption', $configs['smtp']['socketType'] === 'SSL' ? 'SSL' : 'TLS'));
 $protocolSmtp->appendChild($dom->createElement('AuthRequired', 'on'));
 $protocolSmtp->appendChild($dom->createElement('UsePOPAuth', 'on'));
 $protocolSmtp->appendChild($dom->createElement('SMTPLast', 'off'));
